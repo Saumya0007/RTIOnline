@@ -24,12 +24,12 @@ public class LoginService_ {
 
         User_ user = optionalUser.get();
 
-        // Match password
+
         if (!user.getPassword().equals(password)) {
             return new LoginRespDTO(username, null, null, "InValidUser");
         }
 
-        // Check status via flage, active_idle, password_change, etc.
+
         String status;
 
         if (user.getFlage() != null && user.getFlage() == 1) {
@@ -41,7 +41,7 @@ public class LoginService_ {
         } else if ("Y".equalsIgnoreCase(user.getActiveIdle())) {
             status = "Active";
         } else {
-            status = "AlreadyActive"; // Or handle logic better based on exact rules
+            status = "AlreadyActive";
         }
 
         return new LoginRespDTO(user.getUsername(), user.getRole(), user.getUncode(), status);
