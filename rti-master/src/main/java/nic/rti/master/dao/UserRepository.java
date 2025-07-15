@@ -1,0 +1,12 @@
+package in.gov.rti.repo;
+
+import in.gov.rti.entity.User_;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public interface UserRepository extends JpaRepository<User_, Integer> {
+    Optional<User_> findByUsername(String username);
+}
